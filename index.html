@@ -1,14 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Согласованный лабораторный тест</title>
   </head>
   <body>
-    <img
-      src="https://141.147.45.116/pixel-2800e9d0af73411181ac58313eb384bf.png"
-      alt=""
-    />
+    <h1>Согласованный лабораторный тест</h1>
+    <p>
+      После нажатия кнопки тестовый сервер получит и запишет в журнал IP-адрес
+      вашего интернет-соединения. Это лабораторная проверка, а не определение
+      точного местоположения. Продолжайте, только если согласны.
+    </p>
+    <button id="consent">Согласен, продолжить тест</button>
+    <p id="status" role="status"></p>
+    <img id="result" alt="" hidden />
+
+    <script>
+      document.getElementById("consent").addEventListener(
+        "click",
+        () => {
+          document.getElementById("result").src =
+            "https://141.147.45.116/pixel-2800e9d0af73411181ac58313eb384bf.png";
+          document.getElementById("result").hidden = false;
+          document.getElementById("status").textContent = "Запрос отправлен.";
+          document.getElementById("consent").disabled = true;
+        },
+        { once: true },
+      );
+    </script>
   </body>
 </html>
